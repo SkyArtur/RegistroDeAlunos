@@ -4,7 +4,7 @@ from .exceptions import ValidarNumerosError, ValidarNumerosMinnError, ValidarNum
 
 
 
-def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = None, maxx: Optional[int | float] = None) -> Optional[int | float]:
+def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = None, maxx: Optional[int | float] = None) -> int | float:
     """Valida se o valor informado representa um numero aceitável.
 
     Args:
