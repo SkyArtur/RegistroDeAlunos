@@ -1,9 +1,14 @@
 import logging
 
-from .formater import ColorFormatter, SafeExtraFormatter
+from .formatter import ColorFormatter, SafeExtraFormatter
 
 
 def create_logger():
+    """Cria e configura a instância principal de logger do projeto.
+
+    Returns:
+        A instância de logger configurada para saída em console e arquivo.
+    """
     logger = logging.getLogger("colorido")
     logger.setLevel(logging.DEBUG)
 
