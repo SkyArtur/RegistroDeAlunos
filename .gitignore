@@ -81,3 +81,4 @@ tests/fixtures/artifacts/*
 tests/__pycache__/
 *.log
 app.log
+/database/data/db.sqlite
