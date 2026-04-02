@@ -78,5 +78,6 @@ tests/temp/*
 !tests/temp/.gitkeep
 tests/fixtures/artifacts/*
 !tests/fixtures/artifacts/.gitkeep
+tests/__pycache__/
 *.log
 app.log
