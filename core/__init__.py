@@ -1,6 +1,6 @@
 from .logger import create_logger
 from .validators import validar_numeros, validar_datas
-from .objects import Pessoa, Boletim
+from .objects import Pessoa, Boletim, Aluno
 
 __all__ = [
     # logger
@@ -10,5 +10,6 @@ __all__ = [
     'validar_datas',
     # objects
     'Pessoa',
-    'Boletim'
+    'Boletim',
+    'Aluno'
 ]
