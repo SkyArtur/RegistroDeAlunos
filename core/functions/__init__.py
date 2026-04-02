@@ -1,3 +1,3 @@
-from .filer import criar_arquivo
+from .filer import criar_arquivo, caminho_database
 
-__all__ = ['criar_arquivo']
+__all__ = ['criar_arquivo', 'caminho_database']
