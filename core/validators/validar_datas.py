@@ -1,11 +1,10 @@
 import re
-from typing import Optional
 from datetime import date
 
 from .exceptions import ValidarDatasError
 
 
-def validar_datas(data: str) -> Optional[date]:
+def validar_datas(data: str) -> date:
     """Valida uma data textual e a converte para o tipo ``date``.
 
     Args:
