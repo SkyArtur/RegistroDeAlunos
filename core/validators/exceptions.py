@@ -45,7 +45,7 @@ class ValidarDatasError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return f'Data inválida. '
+        return 'Data inválida. '
 
 
 class ValidarNumerosError(ValidadoresError):
@@ -57,7 +57,7 @@ class ValidarNumerosError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return f'Valor não é um número válido '
+        return 'Valor não é um número válido '
 
 
 class ValidarNumerosMaxxError(ValidadoresError):
