@@ -70,3 +70,11 @@ venv.bak/
 __pypackages__/
 
 Labs
+
+# Tests
+!tests/
+!tests/**
+tests/temp/*
+!tests/temp/.gitkeep
+tests/fixtures/artifacts/*
+!tests/fixtures/artifacts/.gitkeep
