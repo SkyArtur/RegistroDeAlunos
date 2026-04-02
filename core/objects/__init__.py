@@ -1,4 +1,3 @@
-from .pessoa import Pessoa
-from .boletim import Boletim
+from .aluno import Pessoa, Boletim, Aluno
 
-__all__ = ['Pessoa', 'Boletim']
+__all__ = ['Pessoa', 'Boletim', 'Aluno']
