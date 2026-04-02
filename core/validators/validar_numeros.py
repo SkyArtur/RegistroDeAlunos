@@ -3,6 +3,24 @@ from typing import Optional
 from .exceptions import ValidarNumerosError, ValidarNumerosMinnError, ValidarNumerosMaxxError
 
 
+def _converter_texto_para_numero(valor: str) -> int | float:
+    """Converte uma representação textual simples para número.
+
+    Args:
+        valor: Texto representando um número inteiro ou decimal.
+
+    Returns:
+        O valor convertido para ``int`` ou ``float``.
+
+    Raises:
+        ValueError: Quando o texto informado não representa um número válido.
+    """
+    valor_normalizado = valor.strip().replace(',', '.')
+    if '.' in valor_normalizado:
+        return float(valor_normalizado)
+    return int(valor_normalizado)
+
+
 
 def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = None, maxx: Optional[int | float] = None) -> int | float:
     """Valida se o valor informado representa um numero aceitável.
@@ -21,7 +39,7 @@ def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = N
         ValidarNumerosMaxxError: Quando o valor for maior que o limite maximo.
     """
     try:
-        _valor = valor if not isinstance(valor, str) else eval(valor.replace(',', '.'))
+        _valor = valor if not isinstance(valor, str) else _converter_texto_para_numero(valor)
         if minn is not None or maxx is not None:
             if minn is not None:
                 if not _valor >= minn:
@@ -30,7 +48,7 @@ def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = N
                 if not _valor <= maxx:
                     raise ValidarNumerosMaxxError(valor=valor, maxx=maxx)
         return _valor
-    except (ValidarNumerosMaxxError, ValidarNumerosMinnError, NameError, IndexError) as erro:
-        if isinstance(erro, NameError) or isinstance(erro, IndexError):
+    except (ValidarNumerosMaxxError, ValidarNumerosMinnError, ValueError, TypeError) as erro:
+        if isinstance(erro, ValueError) or isinstance(erro, TypeError):
             raise ValidarNumerosError(valor=valor)
         raise
