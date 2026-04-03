@@ -35,7 +35,7 @@ def create_logger():
 
     file_handler = logging.FileHandler("app.log", encoding="utf-8")
     file_handler.setLevel(logging.DEBUG)
-    file_handler.addFilter(LevelFilter(min_level=logging.WARNING, max_level=logging.ERROR))
+    file_handler.addFilter(LevelFilter(min_level=logging.ERROR))
     file_handler.setFormatter(SafeExtraFormatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s < %(detalhe)s >"))
 
     logger.addHandler(console_handler)
