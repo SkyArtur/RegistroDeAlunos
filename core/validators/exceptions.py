@@ -25,8 +25,6 @@ class ValidadoresError(Exception):
         self.message = self.get_message()
         super().__init__(self.message)
 
-    def __str__(self):
-        return repr(self.message)
 
     def get_message(self):
         """Retorna a mensagem padrão associada a exceção.
@@ -34,7 +32,7 @@ class ValidadoresError(Exception):
         Returns:
             A mensagem textual correspondente ao erro de validacao.
         """
-        pass
+        raise NotImplementedError('Subclasses de ValidadoresError devem implementar get_message()')
 
 
 class ValidarDatasError(ValidadoresError):
