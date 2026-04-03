@@ -38,17 +38,18 @@ def validar_numeros(valor: int | float | str, *, minn: Optional[int | float] = N
         ValidarNumerosMinnError: Quando o valor for menor que o limite minimo.
         ValidarNumerosMaxxError: Quando o valor for maior que o limite maximo.
     """
+    detalhe = str(validar_numeros.__name__)
     try:
         _valor = valor if not isinstance(valor, str) else _converter_texto_para_numero(valor)
         if minn is not None or maxx is not None:
             if minn is not None:
                 if not _valor >= minn:
-                    raise ValidarNumerosMinnError(valor=valor, minn=minn)
+                    raise ValidarNumerosMinnError(valor, minn=minn, detalhe=detalhe)
             if maxx is not None:
                 if not _valor <= maxx:
-                    raise ValidarNumerosMaxxError(valor=valor, maxx=maxx)
+                    raise ValidarNumerosMaxxError(valor, maxx=maxx, detalhe=detalhe)
         return _valor
     except (ValidarNumerosMaxxError, ValidarNumerosMinnError, ValueError, TypeError) as erro:
         if isinstance(erro, ValueError) or isinstance(erro, TypeError):
-            raise ValidarNumerosError(valor=valor)
+            raise ValidarNumerosError(valor, detalhe=detalhe)
         raise

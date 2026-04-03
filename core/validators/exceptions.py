@@ -5,10 +5,11 @@ class ValidadoresError(Exception):
     """Classe base para erros relacionados aos validadores do projeto."""
 
     def __init__(self,
-        *,
         valor: Optional[int | float | str] = None,
+        *,
         minn: Optional[int | float ] = None,
-        maxx: Optional[int | float ] = None, **kwargs):
+        maxx: Optional[int | float ] = None,
+        detalhe: str = '', **kwargs):
         """Inicializa a exceção com os dados utilizados na validacao.
 
         Args:
@@ -20,7 +21,7 @@ class ValidadoresError(Exception):
         self.valor = valor
         self.minn = minn
         self.maxx = maxx
-        self.detalhe = self.valor
+        self.detalhe = detalhe
         self.message = self.get_message()
         super().__init__(self.message)
 
@@ -45,7 +46,7 @@ class ValidarDatasError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return 'Data inválida. '
+        return f'Data inválida: {self.valor}'
 
 
 class ValidarNumerosError(ValidadoresError):
@@ -57,7 +58,7 @@ class ValidarNumerosError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return 'Valor não é um número válido '
+        return f'Valor [{self.valor}] não é um número válido'
 
 
 class ValidarNumerosMaxxError(ValidadoresError):
@@ -69,7 +70,7 @@ class ValidarNumerosMaxxError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return f'Valor maior que [{self.maxx}] '
+        return f'Valor [{self.valor}] maior que o máximo [{self.maxx}]'
 
 
 class ValidarNumerosMinnError(ValidadoresError):
@@ -81,4 +82,4 @@ class ValidarNumerosMinnError(ValidadoresError):
         Returns:
             A mensagem textual correspondente ao erro identificado.
         """
-        return f"Valor menor que o mínimo [{self.minn}] "
+        return f"Valor [{self.valor}] menor que o mínimo [{self.minn}]"
