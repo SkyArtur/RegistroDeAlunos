@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from database.connector import Conector
 from core import caminho_database
 
