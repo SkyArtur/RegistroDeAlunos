@@ -33,6 +33,6 @@ class GerenciadorDatabase:
         else:
             return self.cursor.fetchall()
 
-    def alter(self) -> int:
+    def alter(self) -> int | None:
         self.cursor.execute(self.query, self.dados)
-        return self.cursor.rowcount
+        return self.cursor.lastrowid
