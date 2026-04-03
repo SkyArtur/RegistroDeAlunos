@@ -1,6 +1,6 @@
 import logging
 
-from .formatter import ColorFormatter, SafeExtraFormatter, SafeColorFormatter
+from .formatter import SafeExtraFormatter, SafeColorFormatter
 from .filter import LevelFilter
 
 
