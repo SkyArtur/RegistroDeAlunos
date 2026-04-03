@@ -35,14 +35,14 @@ class SafeExtraFormatter(logging.Formatter):
     """Assegura a presença de campos extras esperados durante a formatação."""
 
     def format(self, record):
-        """Formata o registro de log garantindo atributos extras padrão.
+        if not hasattr(record, 'detalhe'):
+            record.detalhe = ""
+        return super().format(record)
 
-        Args:
-            record: Registro de log a ser formatado.
+class SafeColorFormatter(ColorFormatter):
+    """Assegura a presença de campos extras esperados durante a formatação."""
 
-        Returns:
-            A mensagem formatada com os atributos adicionais necessários.
-        """
+    def format(self, record):
         if not hasattr(record, 'detalhe'):
             record.detalhe = ""
         return super().format(record)

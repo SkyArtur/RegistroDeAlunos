@@ -84,7 +84,7 @@ def test_entrada_numeros_lanca_erro_quando_excede_tentativas(monkeypatch):
         entrada_numeros("Digite um numero: ", config_tentativas=3)
 
     assert exc_info.value.detalhe == "entrada_numeros"
-    assert str(exc_info.value) == "Foi excedida o número máximo de chamadas recursivas"
+    assert str(exc_info.value) == "Função <entrada_numeros> excedeu o número máximo de chamadas"
 
 
 def test_entrada_datas_lanca_erro_quando_excede_tentativas(monkeypatch):

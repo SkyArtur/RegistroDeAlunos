@@ -20,4 +20,4 @@ def validar_datas(data: str) -> date:
         regex = re.match(r'^(\d{2})[-/]?(\d{2})[-/]?(\d{4})$', data.strip()).groups()
         return date.fromisoformat(''.join(regex[::-1]))
     except (AttributeError, TypeError, ValueError, IndexError):
-        raise ValidarDatasError(valor=data)
+        raise ValidarDatasError(data, detalhe=str(validar_datas.__name__))

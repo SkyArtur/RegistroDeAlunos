@@ -1,7 +1,7 @@
 
 
 class EntradaTentativasError(Exception):
-    def __init__(self, func_name):
-        self.detalhe = func_name
-        self.message = "Foi excedida o número máximo de chamadas recursivas"
+    def __init__(self, detalhe):
+        self.detalhe = detalhe
+        self.message = f"Função <{detalhe}> excedeu o número máximo de chamadas"
         super().__init__(self.message)

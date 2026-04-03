@@ -41,7 +41,7 @@ def test_validar_datas_retorna_date_correspondente(entrada, esperado):
 )
 def test_validar_datas_lanca_erro_para_entradas_invalidas(entrada):
     """Verifica que entradas inválidas de data disparem a exceção esperada."""
-    with pytest.raises(ValidarDatasError, match="Data inválida"):
+    with pytest.raises(ValidarDatasError, match=f'Data inválida: {entrada}'):
         validar_datas(entrada)
 
 
@@ -75,7 +75,7 @@ def test_validar_numeros_retorna_tipo_e_valor_esperados(entrada, tipo_esperado, 
 )
 def test_validar_numeros_lanca_erro_para_entradas_invalidas(entrada):
     """Assegura que textos não numéricos resultem em erro de validação numérica."""
-    with pytest.raises(ValidarNumerosError, match="Valor não é um número válido"):
+    with pytest.raises(ValidarNumerosError, match=r"Valor \[{}\] não é um número válido".format(entrada)):
         validar_numeros(entrada)
 
 
@@ -89,7 +89,7 @@ def test_validar_numeros_respeita_limite_minimo_e_retorna_valor_no_limite():
 
 def test_validar_numeros_lanca_erro_quando_valor_e_menor_que_minimo():
     """Verifica o erro específico quando o valor fica abaixo do limite mínimo."""
-    with pytest.raises(ValidarNumerosMinnError, match=r"Valor menor que o mínimo \[12\]"):
+    with pytest.raises(ValidarNumerosMinnError, match=r"Valor \[10\] menor que o mínimo \[12\]"):
         validar_numeros("10", minn=12)
 
 
@@ -103,7 +103,7 @@ def test_validar_numeros_respeita_limite_maximo_e_retorna_valor_no_limite():
 
 def test_validar_numeros_lanca_erro_quando_valor_e_maior_que_maximo():
     """Verifica o erro específico quando o valor excede o limite máximo."""
-    with pytest.raises(ValidarNumerosMaxxError, match=r"Valor maior que \[12\]"):
+    with pytest.raises(ValidarNumerosMaxxError, match=r"Valor \[13\] maior que o máximo \[12\]"):
         validar_numeros("13", maxx=12)
 
 
@@ -117,5 +117,5 @@ def test_validar_numeros_aplica_limites_minimo_e_maximo_na_mesma_validacao():
 
 def test_validar_numeros_lanca_erro_de_minimo_antes_de_validar_maximo():
     """Documenta a precedência atual da validação de mínimo quando ambos os limites são usados."""
-    with pytest.raises(ValidarNumerosMinnError, match=r"Valor menor que o mínimo \[5\]"):
+    with pytest.raises(ValidarNumerosMinnError, match=r"Valor \[4\] menor que o mínimo \[5\]"):
         validar_numeros("4", minn=5, maxx=3)

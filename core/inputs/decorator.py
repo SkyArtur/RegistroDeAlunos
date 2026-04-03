@@ -19,8 +19,7 @@ def entrada_decorator(func: Callable) -> Callable:
                 return _input
             except (ValidadoresError, ) as e:
                 mensagem = getattr(e, "message", str(e))
-                detalhe = getattr(e, "detalhe", func.__name__)
-                logger.warning(mensagem, extra={'detalhe': detalhe})
+                logger.warning(mensagem)
                 tentativas -= 1
         raise EntradaTentativasError(func.__name__)
     return wrapper
