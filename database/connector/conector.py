@@ -14,5 +14,8 @@ class Conector:
     def commit(self) -> None:
         self.conexao.commit()
 
+    def rollback(self) -> None:
+        self.conexao.rollback()
+
     def close(self) -> None:
         self.conexao.close()
