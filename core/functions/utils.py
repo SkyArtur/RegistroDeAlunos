@@ -1,4 +1,18 @@
+import os
+import subprocess
 from pathlib import Path
+
+def limpar_display():
+    subprocess.run("cls" if os.name == "nt" else "clear", shell=True)
+
+def display_top(mensagem: str) -> None:
+    limpar_display()
+    banner = f"""
+    **************************
+        {mensagem} 
+    **************************
+    """
+    print(banner)
 
 def criar_arquivo(file: Path) -> Path:
     if not file.parent.exists():
