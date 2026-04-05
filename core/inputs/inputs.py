@@ -1,7 +1,7 @@
 from datetime import date
 
 from .decorator import entrada_decorator
-from core import validar_numeros, validar_datas
+from core.validators import validar_numeros, validar_datas
 
 @entrada_decorator
 def entrada_numeros(entrada: str, **kwargs) -> float | int:
