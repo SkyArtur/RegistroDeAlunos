@@ -1,5 +1,4 @@
-from core import create_logger, display_top
-from Labs.interface.menus import menu_confirmar
+from core import create_logger, display_top, menu_confirmar
 from .regiter import cadastro_aluno, cadastro_boletim
 from .manager import GerenciadorDatabase
 
