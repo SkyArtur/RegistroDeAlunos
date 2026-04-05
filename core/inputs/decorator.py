@@ -2,7 +2,7 @@ from functools import wraps
 from typing import Callable
 
 from core.validators.exceptions import ValidadoresError
-from core import create_logger
+from core.logger import create_logger
 from .exceptions import EntradaTentativasError
 
 

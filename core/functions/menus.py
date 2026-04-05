@@ -1,4 +1,4 @@
-from core import entrada_numeros
+from core.inputs import entrada_numeros
 
 
 def menu_numerico(mensagem: str, **kwargs) -> int | float:
@@ -12,7 +12,7 @@ def menu_confirmar(mensagem: str) -> int | float:
     return menu_numerico(menu, minn=0, maxx=1)
 
 def menu_inicial() -> int | float:
-    menu = f"""O que deseja fazer?
+    menu = """O que deseja fazer?
     [1] Registrar aluno(a);
     [2] Atualizar aluno(a);
     [3] Exibir aluno(a);
