@@ -1,5 +1,5 @@
 from .logger import create_logger
-from .functions import criar_arquivo, caminho_database, limpar_display, display_top
+from .functions import criar_arquivo, caminho_database, limpar_display, display_top, menu_inicial, menu_confirmar
 from .validators import validar_numeros, validar_datas
 from .objects import Pessoa, Boletim, Aluno
 from .inputs import entrada_padrao, entrada_numeros, entrada_datas
@@ -10,6 +10,8 @@ __all__ = [
     'caminho_database',
     'limpar_display',
     'display_top',
+    'menu_inicial',
+    'menu_confirmar',
     # logger
     'create_logger',
     # validators
